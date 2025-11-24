@@ -18,7 +18,7 @@ A comprehensive service-oriented web application demonstrating distributed syste
 | **Course** | CSE 445 / 598 |
 | **Assignment** | 6 – Integrated Service-Oriented Web Application |
 | **Institution** | Arizona State University |
-| **Semester** | Spring 2025 |
+| **Semester** | Fall 2025 |
 
 ---
 
