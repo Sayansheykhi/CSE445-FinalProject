@@ -14,7 +14,7 @@ A comprehensive service-oriented web application demonstrating distributed syste
 
 | Field | Value |
 |-------|-------|
-| **Name** | Sajjad Sheykhi | Shamarah Shoup | Jaskirat Singh |
+| **Name** | Sajjad Sheykhi , Shamarah Shoup , Jaskirat Singh | 
 | **Course** | CSE 445 / 598 |
 | **Assignment** | 6 – Integrated Service-Oriented Web Application |
 | **Institution** | Arizona State University |
