@@ -1,4 +1,0 @@
-<%@ ServiceHost Language="C#" Debug="true"
-    Service="PhoenixMembershipPortal.Services.QuoteService"
-    CodeBehind="QuoteService.cs" %>
-
