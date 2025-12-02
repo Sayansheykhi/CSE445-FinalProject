@@ -7,26 +7,8 @@ Team Contribution Table
 Team Member          | Contribution Percentage
 ---------------------|---------------|------------------------
 Sajjad Sheykhi       | 40 %
-Shamarah             | 30 %
-FULL NAME            | 30 %
+Shamarah Shoup       | 30 %
+Jaskirat Singh       | 30 %
 ---------------------|---------------|------------------------
 Total                | 100%
-
-
-Grade Scaling
--------------
-
-The contribution percentages listed above are used to scale each team member's final grade for this assignment. According to the assignment instructions, each member's grade is calculated by multiplying the team's overall assignment score by their individual contribution percentage. This ensures that team members receive grades that accurately reflect their level of participation and contribution to the project.
-
-
-Collaborative Work Statement
------------------------------
-
-This project represents a collaborative integration effort where all team members contributed individual components (DLLs, web services, and user controls) that were subsequently integrated into a unified application. While each member was responsible for developing and testing their own components, the final integration work required coordination and collaboration among all team members to ensure seamless functionality and compatibility across all integrated components.
-
-
-Submission Note
----------------
-
-Note: Only one team member submitted the final project to Canvas and deployed it to WebStrar. This single submission represents the entire team's collaborative work and should be considered for grading all team members according to their respective contribution percentages.
 
