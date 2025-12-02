@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Staff>
+	<User id="1">
+		<Username>manager</Username>
+		<Password>ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f</Password>
+		<Email>manager@example.com</Email>
+		<FullName>Staff Manager</FullName>
+		<Department>Administration</Department>
+		<Position>Manager</Position>
+		<DateHired>2023-06-01</DateHired>
+		<IsActive>true</IsActive>
+	</User>
+	<User id="2">
+		<Username>support.staff</Username>
+		<Password>ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f</Password>
+		<Email>support@example.com</Email>
+		<FullName>Support Staff</FullName>
+		<Department>Customer Service</Department>
+		<Position>Support Representative</Position>
+		<DateHired>2024-01-10</DateHired>
+		<IsActive>true</IsActive>
+	</User>
+	<User id="3">
+		<Username>tech.specialist</Username>
+		<Password>ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f</Password>
+		<Email>tech@example.com</Email>
+		<FullName>Technical Specialist</FullName>
+		<Department>IT</Department>
+		<Position>Technical Specialist</Position>
+		<DateHired>2024-02-15</DateHired>
+		<IsActive>true</IsActive>
+	</User>
+	<User id="4">
+		<Username>TA</Username>
+		<Password>d85b22f0890f5e82d76967037156f2a0bf779bcd44123bd5a2fa7ab299a289d6</Password>
+		<Email>ta@example.com</Email>
+		<FullName>Teaching Assistant</FullName>
+		<Department>Computer Science</Department>
+		<Position>Teaching Assistant</Position>
+		<DateHired>2024-01-01</DateHired>
+		<IsActive>true</IsActive>
+	</User>
+</Staff>
+
