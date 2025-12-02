@@ -1,745 +1,506 @@
-# CSE445-FinalProject
+# Phoenix Membership Portal - Team Integration README
 
-[![ASP.NET](https://img.shields.io/badge/ASP.NET-Web%20Forms-512BD4?logo=.net)](https://dotnet.microsoft.com/)
-[![C#](https://img.shields.io/badge/C%23-239120?logo=csharp&logoColor=white)](https://docs.microsoft.com/en-us/dotnet/csharp/)
-[![License](https://img.shields.io/badge/License-Academic-blue.svg)](LICENSE)
-
-**UtilityWebApp – Assignment 6 (CSE 445 – Distributed Software Development)**
-
-A comprehensive service-oriented web application demonstrating distributed systems architecture, authentication, XML data persistence, and web service integration.
+**CSE 445 - Assignment 5 & 6**  
+**Integrated Project Submission**
 
 ---
 
-## 👤 Developer Information
+## 📋 Project Overview
 
-| Field | Value |
-|-------|-------|
-| **Name** | Sajjad Sheykhi , Shamarah Shoup , Jaskirat Singh | 
-| **Course** | CSE 445 / 598 |
-| **Assignment** | 6 – Integrated Service-Oriented Web Application |
-| **Institution** | Arizona State University |
-| **Semester** | Fall 2025 |
+This is the **final integrated project** combining components from all team members into a unified ASP.NET Web Forms application. The base project structure is from **Jaskirat Singh**, with additional components integrated from **Sajjad Sheykhi** and **Shamarah**.
 
 ---
 
-## 📋 Table of Contents
+## 👥 Team Contribution
 
-- [Overview](#-overview)
-- [Features](#-features)
-- [Project Structure](#-project-structure)
-- [Requirements Completed](#-requirements-completed)
-- [Technologies Used](#-technologies-used)
-- [Installation & Setup](#-installation--setup)
-- [Usage Guide](#-usage-guide)
-- [Testing Instructions](#-testing-instructions)
-- [Security Implementation](#-security-implementation)
-- [Deployment](#-deployment)
-- [Grading Rubric Compliance](#-grading-rubric-compliance)
-- [Known Issues](#-known-issues)
-- [Future Enhancements](#-future-enhancements)
-- [License](#-license)
-- [Acknowledgments](#-acknowledgments)
+**CSE 445 - Assignment 6**
 
----
+### Team Contribution Table
 
-## 🚀 Overview
+| Team Member | ASURITE ID | Contribution Percentage |
+|-------------|------------|------------------------|
+| FULL NAME | ASURITE ID | CONTRIBUTION % |
+| FULL NAME | ASURITE ID | CONTRIBUTION % |
+| FULL NAME | ASURITE ID | CONTRIBUTION % |
+| **Total** | | **100%** |
 
-Assignment 6 represents the **full integration phase** of the CSE 445 final project. This assignment builds upon Assignment 5 by transforming individual components into a complete, secure, and deployable web application.
+### Grade Scaling
 
-### Evolution from Assignment 5
+The contribution percentages listed above are used to scale each team member's final grade for this assignment. According to the assignment instructions, each member's grade is calculated by multiplying the team's overall assignment score by their individual contribution percentage. This ensures that team members receive grades that accurately reflect their level of participation and contribution to the project.
 
-| **Assignment 5** | **Assignment 6** |
-|------------------|------------------|
-| Individual Components | Fully Integrated Application |
-| TryIt Test Pages | Production-Ready Pages |
-| Basic Services | Authenticated Services |
-| No User Management | Complete Authentication System |
-| Temporary Storage | XML Data Persistence |
-| Local Testing | WebStar Deployment |
+### Collaborative Work Statement
 
-### Key Objectives
+This project represents a collaborative integration effort where all team members contributed individual components (DLLs, web services, and user controls) that were subsequently integrated into a unified application. While each member was responsible for developing and testing their own components, the final integration work required coordination and collaboration among all team members to ensure seamless functionality and compatibility across all integrated components.
 
-This project demonstrates proficiency in:
+### Submission Note
 
-- 🔐 **Secure Authentication** – Forms-based authentication with role-based access control
-- 💾 **XML Data Persistence** – File-based storage for user credentials
-- 🛡️ **Password Security** – SHA-256 hashing via custom DLL
-- 🌐 **Web Services** – ASMX service integration
-- 🎯 **User Controls** – Custom CAPTCHA implementation
-- 📊 **Session Management** – Application and session state tracking
-- 🚀 **Deployment** – Production deployment to WebStar
+**Note:** Only one team member submitted the final project to Canvas and deployed it to WebStrar. This single submission represents the entire team's collaborative work and should be considered for grading all team members according to their respective contribution percentages.
 
 ---
 
-## ✨ Features
+## 👥 Team Members & Contributions
 
-### 🔒 Authentication & Authorization
+### 1. Jaskirat Singh (Base Project)
 
-- **Member Registration** with CAPTCHA validation
-- **Dual Role System** (Member & Staff)
-- **Forms Authentication** with automatic redirection
-- **Session-based** access control
-- **Secure Password Storage** using SHA-256 hashing
+**Role**: Base Project Provider  
+**Project Structure**: Chosen as the foundation due to its complete, production-ready structure
 
-### 📦 Core Components
+#### Components Integrated:
 
-- **Service Directory** – Centralized service listing on Default.aspx
-- **Weather Lookup Service** – ASMX web service for weather data
-- **Simple Security Library** – Custom DLL for password hashing
-- **Custom CAPTCHA Control** – User control for bot prevention
-- **Global Event Handlers** – Application-wide session/visit tracking
+##### **DLL Component**
+- **PhoenixSecurity** (Class Library)
+  - **Location**: `PhoenixSecurity/PhoenixSecurity.csproj`
+  - **Namespace**: `PhoenixSecurity`
+  - **Key Class**: `HashUtility`
+  - **Method**: `ComputeSha256(string input)`
+  - **Purpose**: SHA256 password hashing utility
+  - **Status**: ✅ Integrated under "DLLs" solution folder
 
-### 👥 User Areas
+##### **WCF Service**
+- **MembershipService** (WCF Service)
+  - **Location**: `PhoenixMembershipPortal/MembershipService.svc`
+  - **Namespace**: `PhoenixMembershipPortal`
+  - **Interface**: `IMembershipService`
+  - **Method**: `CheckUsernameAvailability(string username)`
+  - **Purpose**: Checks if username exists in Members.xml
+  - **Status**: ✅ Integrated (existing service, kept in root)
 
-- **Public Area** (Default.aspx) – Service directory and TryIt pages
-- **Member Area** (Member.aspx) – Authenticated member services
-- **Staff Area** (Staff.aspx) – Administrative staff functions
+##### **User Control**
+- **ViewSwitcher.ascx**
+  - **Original Location**: `PhoenixMembershipPortal/ViewSwitcher.ascx` (root level)
+  - **New Location**: `PhoenixMembershipPortal/UserControls/ViewSwitcher.ascx`
+  - **Namespace**: `PhoenixMembershipPortal`
+  - **Purpose**: Allows users to switch between Mobile and Desktop views
+  - **Used In**: `Site.Mobile.Master`
+  - **Status**: ✅ Integrated (moved to UserControls folder)
 
-### 💾 Data Management
-
-- **XML-Based Storage** – Member.xml and Staff.xml
-- **Persistent User Data** – Account information retention
-- **Session Tracking** – Visit counters and user activity
+##### **Base Project Infrastructure**
+- **Solution File**: `PhoenixMembershipPortal.sln`
+- **Project Structure**: Modern ASP.NET Web Forms structure
+- **UI Framework**: Bootstrap 5.2.3
+- **NuGet Packages**: Complete package management
+- **Master Pages**: Site.Master and Site.Mobile.Master
+- **Target Framework**: .NET Framework 4.7.2
+- **Status**: ✅ Used as base structure
 
 ---
 
-## 🧩 Project Structure
+### 2. Sajjad Sheykhi
+
+#### Components Integrated:
+
+##### **DLL Component**
+- **SimpleSecurityLib** (Class Library)
+  - **Source Location**: `Sajjad-Sheykhi-a5/SimpleSecurityLib/`
+  - **New Location**: `CSE445-FinalProject-Jaskirat_Singh/SimpleSecurityLib/`
+  - **Namespace**: `SimpleSecurityLib` (unchanged)
+  - **Key Class**: `SimpleHasher`
+  - **Method**: `ComputeHash(string input)`
+  - **Purpose**: SHA256 password hashing utility (alternative implementation)
+  - **Status**: ✅ Integrated under "DLLs" solution folder
+  - **Integration Notes**: Both hashing DLLs kept separate due to different namespaces
+
+##### **ASMX Web Service**
+- **WeatherService** (ASMX Web Service)
+  - **Source Location**: `Sajjad-Sheykhi-a5/WeatherLookupService/WeatherService.asmx`
+  - **New Location**: `PhoenixMembershipPortal/Services/WeatherService.asmx`
+  - **Original Namespace**: `WeatherLookupService`
+  - **New Namespace**: `PhoenixMembershipPortal.Services`
+  - **Method**: `GetTemperature(string zipcode)`
+  - **Returns**: `int` (hard-coded 72°F)
+  - **Status**: ✅ Integrated in Services folder
+  - **Files Integrated**:
+    - `WeatherService.asmx`
+    - `WeatherService.asmx.cs`
+  - **Integration Notes**: Namespace updated to match unified structure
+
+---
+
+### 3. Shamarah
+
+#### Components Integrated:
+
+##### **WCF Service**
+- **QuoteService** (WCF Service)
+  - **Source Location**: `Assignment5_Shamarah/UtilityDemo_Service/QuoteService.svc`
+  - **New Location**: `PhoenixMembershipPortal/Services/QuoteService.svc`
+  - **Original Namespace**: `QuoteServiceApp`
+  - **New Namespace**: `PhoenixMembershipPortal.Services`
+  - **Interface**: `IQuoteService`
+  - **Method**: `GetQuote(string name)`
+  - **Returns**: Personalized quote string
+  - **Status**: ✅ Integrated in Services folder
+  - **Files Integrated**:
+    - `QuoteService.svc`
+    - `QuoteService.cs`
+    - `IQuoteService.cs`
+  - **Integration Notes**: 
+    - Namespace updated to `PhoenixMembershipPortal.Services`
+    - Service configured in Web.config serviceModel section
+
+---
+
+## 🔧 Integrated Components Created During Integration
+
+### Authentication & Authorization System
+- **Login.aspx** - User authentication page
+  - Validates credentials from Member.xml and Staff.xml
+  - Uses SimpleSecurityLib for password hashing
+  - Creates Forms Authentication tickets with roles
+  
+- **Signup.aspx** - User registration page
+  - Captcha validation
+  - Adds new users to Member.xml
+  
+- **Member.aspx** - Member-only portal
+  - Role-based access control
+  - Displays member profile from Member.xml
+  
+- **Staff.aspx** - Staff-only portal with admin functionality
+  - Role-based access control
+  - Displays all members from Member.xml
+  - TA test account: Username `TA`, Password `Cse445!`
+
+### User Controls
+- **Captcha.ascx** - Math-based captcha control
+  - **Location**: `PhoenixMembershipPortal/UserControls/Captcha.ascx`
+  - **Purpose**: Prevents automated bot registrations
+  - **Status**: ✅ Created during integration
+
+### Utility Classes
+- **XMLManager.cs** - XML data management utility
+  - **Location**: `PhoenixMembershipPortal/App_Code/XMLManager.cs`
+  - **Purpose**: Provides read/write/modify operations for Member.xml and Staff.xml
+  - **Status**: ✅ Created during integration
+
+### XML Data Files
+- **Member.xml** - Member user data storage
+  - **Location**: `PhoenixMembershipPortal/App_Data/Member.xml`
+  - **Structure**: Contains User elements with Username, Password (hashed), Email, FullName, Role, DateCreated, IsActive
+  - **Status**: ✅ Created during integration
+
+- **Staff.xml** - Staff user data storage
+  - **Location**: `PhoenixMembershipPortal/App_Data/Staff.xml`
+  - **Structure**: Contains User elements with Username, Password (hashed), Email, FullName, Department, Position, DateHired, IsActive
+  - **TA Account**: Username `TA`, Password `Cse445!` (hashed)
+  - **Status**: ✅ Created during integration
+
+### Global Application Events
+- **Global.asax.cs** - Application and session event handlers
+  - **Location**: `PhoenixMembershipPortal/Global.asax.cs`
+  - **Events Merged from All Members**:
+    - `Application_Start` - Initializes visit counters
+    - `Session_Start` - Thread-safe visit counting
+    - `Application_AuthenticateRequest` - Role assignment from Forms Authentication
+  - **Status**: ✅ Merged from all team members' Global.asax.cs files
+
+### UI Enhancements
+- **Default.aspx** - Enhanced home page
+  - Components Summary Table listing all integrated components
+  - Navigation buttons (Login, Signup, Member, Staff)
+  - Try-It buttons for all services and DLLs
+  - **Status**: ✅ Enhanced during integration
+
+---
+
+## 📊 Complete Integration Summary Table
+
+| Component Type | Component Name | Source Member | Original Location | Integrated Location | Status |
+|----------------|---------------|---------------|-------------------|---------------------|--------|
+| **DLL** | PhoenixSecurity | Jaskirat Singh | PhoenixSecurity/ | DLLs/PhoenixSecurity/ | ✅ Integrated |
+| **DLL** | SimpleSecurityLib | Sajjad Sheykhi | Sajjad-Sheykhi-a5/SimpleSecurityLib/ | SimpleSecurityLib/ | ✅ Integrated |
+| **WCF Service** | MembershipService | Jaskirat Singh | Root level | MembershipService.svc | ✅ Integrated |
+| **WCF Service** | QuoteService | Shamarah | Assignment5_Shamarah/UtilityDemo_Service/ | Services/QuoteService.svc | ✅ Integrated |
+| **ASMX Service** | WeatherService | Sajjad Sheykhi | Sajjad-Sheykhi-a5/WeatherLookupService/ | Services/WeatherService.asmx | ✅ Integrated |
+| **User Control** | ViewSwitcher | Jaskirat Singh | Root level | UserControls/ViewSwitcher.ascx | ✅ Integrated |
+| **User Control** | Captcha | Created | N/A | UserControls/Captcha.ascx | ✅ Created |
+| **Utility Class** | XMLManager | Created | N/A | App_Code/XMLManager.cs | ✅ Created |
+| **XML Data** | Member.xml | Created | N/A | App_Data/Member.xml | ✅ Created |
+| **XML Data** | Staff.xml | Created | N/A | App_Data/Staff.xml | ✅ Created |
+| **Global Events** | Global.asax.cs | Merged (All) | Multiple sources | Global.asax.cs | ✅ Merged |
+
+---
+
+## 🏗️ Project Structure
+
 ```
-CSE445-FinalProject/
-│
-├── 📁 UtilityWebApp/                 # Main ASP.NET Web Forms Application
-│   │
-│   ├── 🌐 Default.aspx               # Public landing page + Service Directory
-│   ├── 🌐 Member.aspx                # Member-only authenticated area
-│   ├── 🌐 Staff.aspx                 # Staff-only administrative area
-│   ├── 🌐 Register.aspx              # User registration with CAPTCHA
-│   ├── 🌐 Login.aspx                 # Authentication page
-│   │
-│   ├── 📄 Global.asax                # Application & Session event handlers
-│   ├── ⚙️ Web.config                 # Authentication & service configuration
-│   │
-│   ├── 📁 App_Data/
-│   │   ├── 📄 Member.xml             # Member accounts (hashed passwords)
-│   │   └── 📄 Staff.xml              # Staff accounts (includes TA login)
-│   │
-│   ├── 📁 Controls/
-│   │   └── 🎯 Captcha.ascx           # Custom CAPTCHA User Control
-│   │       └── Captcha.ascx.cs       # CAPTCHA code-behind
-│   │
-│   ├── 📁 Service References/
-│   │   └── WeatherLookupService/     # Integrated ASMX service reference
-│   │
-│   └── 📁 Styles/
-│       └── 🎨 Site.css               # Application styling
-│
-├── 📁 SimpleSecurityLib/             # Custom Security DLL (Assignment 5)
-│   ├── 🔐 SimpleHasher.cs            # SHA-256 hashing implementation
-│   └── 📋 SimpleSecurityLib.csproj   # Class library project
-│
-├── 📁 WeatherLookupService/          # ASMX Web Service (Assignment 5)
-│   ├── 🌤️ WeatherService.asmx        # Service endpoint
-│   └── 💻 WeatherService.cs          # Service implementation
-│
-├── 📄 CSE445-FinalProject.sln        # Visual Studio solution file
-├── 📖 README.md                      # This documentation
-└── 📋 .gitignore                     # Git ignore rules
+PhoenixMembershipPortal/
+├── PhoenixMembershipPortal.sln          # Solution file (Jaskirat)
+├── PhoenixMembershipPortal/             # Web Application (Jaskirat - Base)
+│   ├── App_Code/
+│   │   └── XMLManager.cs                # Created during integration
+│   ├── App_Data/
+│   │   ├── Member.xml                   # Created during integration
+│   │   └── Staff.xml                    # Created during integration (with TA account)
+│   ├── Services/                        # Created for service integration
+│   │   ├── QuoteService.svc             # From Shamarah
+│   │   ├── QuoteService.cs
+│   │   ├── IQuoteService.cs
+│   │   ├── WeatherService.asmx          # From Sajjad
+│   │   └── WeatherService.asmx.cs
+│   ├── UserControls/                    # Created for user control organization
+│   │   ├── ViewSwitcher.ascx            # From Jaskirat (moved)
+│   │   ├── ViewSwitcher.ascx.cs
+│   │   ├── Captcha.ascx                 # Created during integration
+│   │   └── Captcha.ascx.cs
+│   ├── MembershipService.svc            # From Jaskirat (root level)
+│   ├── MembershipService.cs
+│   ├── Login.aspx                       # Created during integration
+│   ├── Signup.aspx                      # Created during integration
+│   ├── Member.aspx                      # Created during integration
+│   ├── Staff.aspx                       # Created during integration
+│   ├── Default.aspx                     # Enhanced during integration
+│   └── Global.asax.cs                   # Merged from all members
+├── PhoenixSecurity/                     # DLL Project (Jaskirat)
+│   └── PhoenixSecurity.csproj
+└── SimpleSecurityLib/                   # DLL Project (Sajjad)
+    └── SimpleSecurityLib.csproj
 ```
 
 ---
 
-## 🔐 Requirements Completed
+## 🔄 Integration Process Summary
 
-### ✅ 1. Member Registration Page
+### Phase 1: Base Project Selection
+- **Selected**: Jaskirat Singh's project as base (best structure)
+- **Reason**: Complete solution file, modern structure, NuGet packages, Bootstrap UI
 
-- [x] User registration form with validation
-- [x] Password hashing using `SimpleSecurityLib` DLL
-- [x] Credentials saved to `Member.xml`
-- [x] CAPTCHA User Control integration
-- [x] Duplicate username prevention
-- [x] Input sanitization
+### Phase 2: DLL Integration
+- Integrated `SimpleSecurityLib` from Sajjad Sheykhi
+- Created "DLLs" solution folder
+- Both DLLs kept separate (different namespaces)
 
-### ✅ 2. Staff Login Page
+### Phase 3: Service Integration
+- Created `Services/` folder
+- Integrated `QuoteService` from Shamarah (WCF)
+- Integrated `WeatherService` from Sajjad (ASMX)
+- Updated namespaces to `PhoenixMembershipPortal.Services`
+- Merged Web.config serviceModel sections
 
-- [x] Authentication based on `Staff.xml`
-- [x] TA login credentials included:
-  - **Username:** `TA`
-  - **Password:** `Cse445!`
-- [x] Role-based redirection
+### Phase 4: User Control Integration
+- Created `UserControls/` folder
+- Moved `ViewSwitcher` from root to UserControls folder
+- Created `Captcha` user control for signup
 
-### ✅ 3. Access Control
+### Phase 5: Authentication System
+- Created Login.aspx with Forms Authentication
+- Created Signup.aspx with captcha validation
+- Created Member.aspx (role-based access)
+- Created Staff.aspx (admin functionality)
+- Created XMLManager utility class
+- Created Member.xml and Staff.xml data files
 
-- [x] Member-only page (`Member.aspx`)
-- [x] Staff-only page (`Staff.aspx`)
-- [x] Automatic redirect to `Login.aspx` for unauthorized access
-- [x] Forms Authentication in `Web.config`
-- [x] Role validation on protected pages
+### Phase 6: Global.asax Merge
+- Merged Application_Start logic from all members
+- Merged Session_Start logic with thread safety
+- Added Application_AuthenticateRequest for role assignment
 
-### ✅ 4. XML Data Persistence
-
-- [x] User accounts stored in XML format
-- [x] `App_Data/Member.xml` for member accounts
-- [x] `App_Data/Staff.xml` for staff accounts
-- [x] Read/Write operations implemented
-- [x] Data validation and error handling
-
-### ✅ 5. Integration of Assignment 5 Components
-
-- [x] **Hashing DLL** – Password security implementation
-- [x] **Global.asax** – Session and application tracking
-- [x] **Weather Service (ASMX)** – Integrated into member/staff pages
-- [x] **Service Directory** – Available on Default.aspx
-- [x] **TryIt Pages** – Fully operational for all services
-
-### ✅ 6. WebStar Deployment
-
-- [x] Weather Service deployed to WebStar
-- [x] UtilityWebApp deployed to WebStar
-- [x] Default.aspx accessible via WebStar URL
-- [x] All services functional in production environment
+### Phase 7: UI Enhancement
+- Enhanced Default.aspx with component summary table
+- Added navigation buttons
+- Added Try-It buttons for all components
 
 ---
 
-## 🛠️ Technologies Used
+## 🔐 Authentication & Authorization
 
-### Backend
-- **ASP.NET Web Forms** (.NET Framework 4.7.2+)
-- **C#** (Language)
-- **ASMX Web Services** (SOAP)
-- **XML** (Data Storage)
-- **SHA-256** (Cryptographic Hashing)
+### User Roles
+- **"member"** - Users from Member.xml
+- **"staff"** - Users from Staff.xml (including TA account)
 
-### Frontend
-- **HTML5** & **CSS3**
-- **JavaScript** (CAPTCHA validation)
-- **ASP.NET User Controls**
+### Test Accounts
 
-### Development Tools
-- **Visual Studio 2019/2022**
-- **IIS Express** (Local Testing)
-- **WebStar** (Production Deployment)
+#### Member Accounts
+- Username: `john.doe`, Password: `password123`
+- Username: `jane.smith`, Password: `password123`
 
-### Libraries & Components
-- **System.Security.Cryptography** (Hashing)
-- **System.Xml.Linq** (XML Processing)
-- **System.Web.Security** (Forms Authentication)
+#### Staff Accounts
+- Username: `TA`, Password: `Cse445!` ⭐ (TA Test Account)
+- Username: `manager`, Password: `password123`
+- Username: `support.staff`, Password: `password123`
 
 ---
 
-## 💻 Installation & Setup
+## 🌐 Service Endpoints
+
+### WCF Services
+1. **MembershipService**
+   - URL: `/MembershipService.svc`
+   - WSDL: `/MembershipService.svc?wsdl`
+   - Source: Jaskirat Singh
+
+2. **QuoteService**
+   - URL: `/Services/QuoteService.svc`
+   - WSDL: `/Services/QuoteService.svc?wsdl`
+   - Source: Shamarah
+
+### ASMX Services
+3. **WeatherService**
+   - URL: `/Services/WeatherService.asmx`
+   - WSDL: `/Services/WeatherService.asmx?wsdl`
+   - Source: Sajjad Sheykhi
+
+---
+
+## 📝 Key Integration Notes
+
+### Namespace Updates
+- All services updated to `PhoenixMembershipPortal.Services` namespace
+- Original DLL namespaces preserved (PhoenixSecurity, SimpleSecurityLib)
+
+### File Organization
+- All services consolidated in `Services/` folder
+- All user controls consolidated in `UserControls/` folder
+- All DLLs organized under "DLLs" solution folder
+
+### Web.config Updates
+- Forms Authentication configured (60-minute timeout)
+- Role-based authorization for Member.aspx and Staff.aspx
+- Service model configured for all WCF services
+- Handler configuration for .svc files
+
+### Password Hashing
+- Uses `SimpleSecurityLib.SimpleHasher.ComputeHash()` for authentication
+- All passwords stored as SHA256 hashes in XML files
+- Never stored as plain text
+
+---
+
+## ✅ Integration Verification
+
+### All Components Verified
+- ✅ All DLLs compile and reference correctly
+- ✅ All services accessible and functional
+- ✅ All user controls render correctly
+- ✅ Authentication and authorization working
+- ✅ XML data management functional
+- ✅ All team components listed in Default.aspx
+
+### Test Verification
+- ✅ TA account login works
+- ✅ Member portal access control works
+- ✅ Staff portal access control works
+- ✅ All services return correct responses
+- ✅ All DLL hash functions work
+- ✅ Signup with captcha works
+
+---
+
+## 📚 Additional Documentation
+
+For more details, see:
+- `DEPLOYMENT_CHECKLIST.md` - Deployment instructions
+- `TA_TEST_CHECKLIST.md` - Complete test guide
+- `GRADING_CHECKLIST.md` - Grading compliance checklist
+- `FINAL_GRADING_REVIEW.md` - Final review summary
+- `WEB_CONFIG_VALIDATION.md` - Web.config validation report
+
+---
+
+## 🎓 Assignment Requirements Met
+
+### ✅ DLL Components
+- PhoenixSecurity DLL (Jaskirat Singh)
+- SimpleSecurityLib DLL (Sajjad Sheykhi)
+
+### ✅ Web Services
+- MembershipService WCF (Jaskirat Singh)
+- QuoteService WCF (Shamarah)
+- WeatherService ASMX (Sajjad Sheykhi)
+
+### ✅ User Controls
+- ViewSwitcher (Jaskirat Singh)
+- Captcha (Created during integration by Sajjad Sheykhi)
+
+### ✅ Integration Features
+- Complete component integration
+- Authentication and authorization
+- XML data management
+- Role-based access control
+- Admin functionality
+
+---
+
+## 👨‍💻 Credits
+
+- **Base Project**: Jaskirat Singh
+- **DLL Integration**: Sajjad Sheykhi (SimpleSecurityLib)
+- **Service Integration**: Shamarah (QuoteService), Sajjad Sheykhi (WeatherService)
+- **User Control**: Jaskirat Singh (ViewSwitcher)
+- **Integration Work**: Team collaboration
+
+---
+
+## 🚀 How to Run in Visual Studio 2019
+
+### Quick Start (5 Steps)
+
+1. **Open Solution File**:
+   - Launch Visual Studio 2019
+   - File → Open → Project/Solution...
+   - Navigate to: `Assignment6/PhoenixMembershipPortal.sln`
+   - Click **Open**
+
+2. **Restore NuGet Packages**:
+   - Right-click solution in Solution Explorer → **Restore NuGet Packages**
+   - Wait for restoration (check Output window for confirmation)
+
+3. **Build Solution**:
+   - Press **`Ctrl+Shift+B`** (or Build → Build Solution)
+   - Verify **0 errors** in Error List window
+
+4. **Set Startup Project**:
+   - Right-click **PhoenixMembershipPortal** project in Solution Explorer
+   - Select **Set as Startup Project**
+   - Project name should appear in **bold**
+
+5. **Run Application**:
+   - Press **`F5`** to run with debugging
+   - Or press **`Ctrl+F5`** to run without debugging
+   - Browser opens automatically to Default.aspx
 
 ### Prerequisites
 
-Before you begin, ensure you have the following installed:
+Before running, ensure you have:
 
-- [x] **Windows OS** (Windows 10/11)
-- [x] **Visual Studio 2019 or 2022**
-  - ASP.NET and web development workload
-  - .NET Framework 4.7.2 or higher
-- [x] **IIS Express** (included with Visual Studio)
-- [x] **Web browser** (Chrome, Firefox, or Edge)
+- ✅ **Visual Studio 2019** installed (Community, Professional, or Enterprise)
+  - Download: https://visualstudio.microsoft.com/downloads/
+- ✅ **.NET Framework 4.7.2** Developer Pack
+  - Usually included with Visual Studio 2019
+- ✅ **ASP.NET and web development** workload installed
+- ✅ **IIS Express** (included with Visual Studio 2019)
 
-### Step-by-Step Installation
+### Expected Result
 
-#### 1. Clone the Repository
-```bash
-git clone https://github.com/yourusername/CSE445-FinalProject.git
-cd CSE445-FinalProject
-```
+After running:
+- Browser opens to `http://localhost:[port]/Default.aspx`
+- Home page displays with:
+  - Project introduction
+  - Navigation buttons (Login, Signup, Member, Staff)
+  - Components Summary Table
+  - Try-It buttons for all services and DLLs
 
-#### 2. Open Solution in Visual Studio
-```
-1. Launch Visual Studio
-2. File → Open → Project/Solution
-3. Navigate to CSE445-FinalProject.sln
-4. Click "Open"
-```
+### Troubleshooting
 
-#### 3. Restore NuGet Packages
-```
-1. Right-click on Solution in Solution Explorer
-2. Select "Restore NuGet Packages"
-3. Wait for completion
-```
+**If solution won't open:**
+- Ensure Visual Studio 2019 is installed with ASP.NET workload
+- Check that .NET Framework 4.7.2 Developer Pack is installed
 
-#### 4. Set Startup Project
-```
-1. Right-click on "UtilityWebApp" in Solution Explorer
-2. Select "Set as Startup Project"
-```
+**If build errors occur:**
+- Right-click solution → **Restore NuGet Packages**
+- Right-click solution → **Rebuild Solution**
+- Check Error List window for specific errors
 
-#### 5. Build Solution
-```
-Build → Build Solution (Ctrl+Shift+B)
-```
+**If services not accessible:**
+- Verify Web.config has correct service configuration
+- Check that all .svc and .asmx files are in correct locations
 
-Verify all three projects build successfully:
-- ✅ UtilityWebApp
-- ✅ SimpleSecurityLib
-- ✅ WeatherLookupService
+### Detailed Instructions
 
-#### 6. Verify App_Data Folder
-
-Ensure `App_Data` folder exists with initial XML files:
-
-**Member.xml:**
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<Members>
-  <!-- Members will be added through registration -->
-</Members>
-```
-
-**Staff.xml:**
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<Staff>
-  <StaffMember>
-    <Username>TA</Username>
-    <Password>[hashed_password_for_Cse445!]</Password>
-    <Role>Staff</Role>
-  </StaffMember>
-</Staff>
-```
-
-#### 7. Run Application
-```
-Press F5 or Debug → Start Debugging
-```
-
-Your default browser should open to `http://localhost:[port]/Default.aspx`
+For comprehensive setup and troubleshooting guide, see:
+- **`VS2019_QUICK_START.md`** - Quick reference guide
+- **`VISUAL_STUDIO_2019_SETUP_GUIDE.md`** - Complete setup guide with troubleshooting
 
 ---
 
-## 📖 Usage Guide
 
-### For End Users
-
-#### 🆕 New User Registration
-
-1. Navigate to **Default.aspx**
-2. Click on **"Register"** link
-3. Fill out registration form:
-   - Username
-   - Password
-   - Confirm Password
-   - Email (optional)
-4. **Complete CAPTCHA** challenge
-5. Click **"Register"**
-6. Upon success, you'll be redirected to **Login.aspx**
-
-#### 🔑 Login Process
-
-1. Navigate to **Login.aspx**
-2. Enter credentials:
-   - **Username**
-   - **Password**
-3. Click **"Login"**
-4. **Members** redirect to → `Member.aspx`
-5. **Staff** redirect to → `Staff.aspx`
-
-#### 👤 Member Area (Member.aspx)
-
-Access requires member authentication. Features include:
-- Integrated weather lookup service
-- Access to member-specific utilities
-- Service consumption examples
-- Session information display
-
-#### 👨‍💼 Staff Area (Staff.aspx)
-
-Access requires staff authentication. Features include:
-- Administrative functions
-- User management capabilities
-- System statistics
-- Enhanced service access
-
-### For Graders/TAs
-
-#### Test Account Credentials
-
-**Staff/TA Login:**
-- **Username:** `TA`
-- **Password:** `Cse445!`
-
-**Test Member Account:**
-Create via registration page or manually add to `Member.xml`
-
----
-
-## 🧪 Testing Instructions
-
-### Functional Testing Checklist
-
-#### ✅ Phase 1: Public Access Testing
-
-- [ ] **Default.aspx** loads successfully
-- [ ] Service Directory displays all services
-- [ ] TryIt buttons function correctly
-- [ ] Navigation links work properly
-- [ ] No authentication required for public pages
-
-#### ✅ Phase 2: Registration Testing
-
-- [ ] Navigate to Register.aspx
-- [ ] CAPTCHA displays correctly
-- [ ] Form validation works:
-  - [ ] Empty fields rejected
-  - [ ] Password mismatch detected
-  - [ ] Invalid CAPTCHA rejected
-- [ ] Successful registration creates entry in `Member.xml`
-- [ ] Password is hashed (not plaintext)
-- [ ] Redirect to Login.aspx after registration
-
-#### ✅ Phase 3: Authentication Testing
-
-- [ ] Login with invalid credentials → Error message
-- [ ] Login as Member → Redirect to Member.aspx
-- [ ] Login as Staff (TA/Cse445!) → Redirect to Staff.aspx
-- [ ] Session maintained across pages
-- [ ] Logout functionality works
-
-#### ✅ Phase 4: Authorization Testing
-
-- [ ] Access `Member.aspx` without login → Redirect to Login.aspx
-- [ ] Access `Staff.aspx` without login → Redirect to Login.aspx
-- [ ] Member cannot access Staff.aspx
-- [ ] Staff can access Staff.aspx
-- [ ] URLs are protected (can't bypass via direct URL)
-
-#### ✅ Phase 5: Service Integration Testing
-
-- [ ] Weather service accessible from Member/Staff pages
-- [ ] Service returns valid data
-- [ ] Error handling for invalid inputs
-- [ ] TryIt pages still functional
-
-#### ✅ Phase 6: Data Persistence Testing
-
-- [ ] Register new member → Check `Member.xml` updated
-- [ ] Login/logout → Session data maintained
-- [ ] Application restart → Data persists
-- [ ] Multiple users → No data collision
-
-#### ✅ Phase 7: Global.asax Testing
-
-- [ ] Application start events fire
-- [ ] Session start events fire
-- [ ] Visit counter increments
-- [ ] Session timeout handling
-
-### Security Testing
-
-- [ ] Passwords stored as hashes (SHA-256)
-- [ ] SQL injection prevention (XML-based, no SQL)
-- [ ] XSS protection (input validation)
-- [ ] CAPTCHA prevents automated registration
-- [ ] Forms Authentication prevents unauthorized access
-
-### XML Validation
-
-Check `App_Data/Member.xml` structure:
-```xml
-<Members>
-  <Member>
-    <Username>testuser</Username>
-    <Password>[HASHED_VALUE]</Password>
-    <Email>test@example.com</Email>
-    <RegistrationDate>2025-01-15</RegistrationDate>
-  </Member>
-</Members>
-```
-
----
-
-## 🛡️ Security Implementation
-
-### Password Security
-
-**Hashing Algorithm:** SHA-256
-
-**Implementation:**
-```csharp
-// Using SimpleSecurityLib.dll
-string hashedPassword = SimpleHasher.Hash(plainTextPassword);
-```
-
-**Security Features:**
-- Passwords **never** stored in plaintext
-- Irreversible hashing function
-- Consistent hash length (256 bits)
-- Collision-resistant algorithm
-
-### Forms Authentication
-
-**Web.config Configuration:**
-```xml
-<authentication mode="Forms">
-  <forms loginUrl="Login.aspx" 
-         timeout="30" 
-         slidingExpiration="true" />
-</authentication>
-
-<authorization>
-  <deny users="?" />
-</authorization>
-```
-
-### CAPTCHA Protection
-
-- Prevents automated bot registration
-- Random character generation
-- Session-based validation
-- Image-based challenge
-
-### Input Validation
-
-- Server-side validation for all inputs
-- RequiredFieldValidator
-- RegularExpressionValidator
-- CompareValidator for password confirmation
-
-### Session Security
-
-- Secure session cookies
-- Timeout configuration (30 minutes)
-- Sliding expiration enabled
-- Session hijacking prevention
-
----
-
-## 🚀 Deployment
-
-### WebStar Deployment Instructions
-
-#### Prerequisites
-- WebStar account credentials
-- FTP client (FileZilla recommended)
-- Compiled application
-
-#### Step 1: Prepare Application
-```bash
-# In Visual Studio
-1. Right-click UtilityWebApp project
-2. Select "Publish"
-3. Choose "Folder" as publish target
-4. Select output directory
-5. Click "Publish"
-```
-
-#### Step 2: Upload to WebStar
-```
-1. Open FTP client
-2. Connect to WebStar server:
-   - Host: webstar.asu.edu
-   - Username: [your_asurite]
-   - Password: [your_password]
-   - Port: 21
-3. Navigate to public_html directory
-4. Upload published files
-5. Set permissions (755 for directories, 644 for files)
-```
-
-#### Step 3: Configure Web.config
-
-Ensure production settings in `Web.config`:
-```xml
-<compilation debug="false" targetFramework="4.7.2" />
-<customErrors mode="On" defaultRedirect="Error.aspx" />
-```
-
-#### Step 4: Test Deployment
-
-1. Navigate to: `http://webstar.asu.edu/~[your_asurite]/Default.aspx`
-2. Test all functionality
-3. Verify services are accessible
-4. Check authentication flow
-
-### Deployment Checklist
-
-- [ ] All files uploaded successfully
-- [ ] Web.config configured for production
-- [ ] App_Data folder permissions set correctly
-- [ ] Services deployed and accessible
-- [ ] Default.aspx loads without errors
-- [ ] Registration/Login functional
-- [ ] XML files writable
-- [ ] CAPTCHA displays correctly
-
----
-
-## 📊 Grading Rubric Compliance
-
-### Assignment 6 Grading Components
-
-| Component | Points | Status | Notes |
-|-----------|--------|--------|-------|
-| **Member Registration** | 15 | ✅ Complete | CAPTCHA, validation, XML storage |
-| **Staff Login** | 10 | ✅ Complete | TA credentials included |
-| **Access Control** | 15 | ✅ Complete | Forms Auth, role-based access |
-| **XML Persistence** | 10 | ✅ Complete | Member.xml & Staff.xml |
-| **Component Integration** | 20 | ✅ Complete | All Assignment 5 components |
-| **WebStar Deployment** | 15 | ✅ Complete | Fully deployed and functional |
-| **Code Quality** | 10 | ✅ Complete | Comments, organization |
-| **Documentation** | 5 | ✅ Complete | README, inline comments |
-| **Total** | **100** | ✅ **Complete** | All requirements met |
-
-### Code Quality Standards
-
-- ✅ **Comprehensive Comments** – Every method and complex logic documented
-- ✅ **Consistent Naming** – PascalCase for classes, camelCase for variables
-- ✅ **Error Handling** – Try-catch blocks for all I/O operations
-- ✅ **Code Organization** – Logical separation of concerns
-- ✅ **DRY Principle** – No code duplication
-
-### Documentation Completeness
-
-- ✅ **README.md** – Complete project documentation
-- ✅ **Inline Comments** – Code-level explanations
-- ✅ **XML Comments** – Method/class documentation
-- ✅ **User Guide** – End-user instructions
-- ✅ **Testing Guide** – Grader instructions
-
----
-
-## ⚠️ Known Issues
-
-### Issue 1: CAPTCHA Refresh
-**Description:** CAPTCHA image may not refresh properly on some browsers  
-**Workaround:** Hard refresh page (Ctrl+F5)  
-**Status:** Minor - Does not affect functionality
-
-### Issue 2: Session Timeout
-**Description:** Session expires after 30 minutes of inactivity  
-**Impact:** User must login again  
-**Status:** By design - configurable in Web.config
-
-### Issue 3: XML File Locking
-**Description:** Concurrent writes to XML files may cause temporary lock  
-**Workaround:** Retry operation after brief delay  
-**Status:** Rare occurrence - handled by exception handling
-
-### Issue 4: WebStar Permissions
-**Description:** App_Data folder may need manual permission setting  
-**Solution:** Set folder to 755 permissions via FTP  
-**Status:** One-time configuration
-
----
-
-## 🔮 Future Enhancements
-
-### Version 2.0 Roadmap
-
-#### Security Enhancements
-- [ ] Implement password salting
-- [ ] Add password strength requirements
-- [ ] Enable two-factor authentication
-- [ ] Implement account lockout after failed attempts
-- [ ] Add HTTPS enforcement
-
-#### Database Migration
-- [ ] Replace XML with SQL Server
-- [ ] Implement Entity Framework
-- [ ] Add database connection pooling
-- [ ] Create stored procedures
-
-#### User Experience
-- [ ] Add password reset functionality
-- [ ] Implement "Remember Me" feature
-- [ ] Create user profile pages
-- [ ] Add email verification
-- [ ] Responsive mobile design
-
-#### Features
-- [ ] RESTful API endpoints
-- [ ] Real-time notifications
-- [ ] Advanced weather forecasting
-- [ ] User activity logs
-- [ ] Administrative dashboard
-
-#### Performance
-- [ ] Implement caching
-- [ ] Optimize XML read/write operations
-- [ ] Add CDN for static assets
-- [ ] Implement lazy loading
-
----
-
-## 📝 License
-
-This project is created for academic purposes as part of CSE 445 at Arizona State University.
-
-**Academic Use Only** – Not for commercial distribution
-
----
-
-## 🙏 Acknowledgments
-
-### Course Resources
-- **CSE 445 Course Materials** – Arizona State University
-- **Instructor** – Course guidance and requirements
-- **Teaching Assistants** – Technical support and feedback
-
-### Technologies & Libraries
-- **Microsoft ASP.NET Team** – Web Forms framework
-- **System.Security.Cryptography** – Hashing implementation
-- **System.Xml.Linq** – XML processing
-
-### Documentation
-- **Microsoft Docs** – ASP.NET and C# documentation
-- **Stack Overflow Community** – Technical problem-solving
-- **GitHub** – Version control and collaboration
-
----
-
-## 📞 Contact & Support
-
-### For Course-Related Questions
-- **Canvas Discussion Board** – Post questions for class
-- **Office Hours** – Instructor/TA availability
-- **Email** – [instructor_email]@asu.edu
-
-### For Technical Issues
-- **GitHub Issues** – Report bugs or problems
-- **Pull Requests** – Suggest improvements
-
----
-
-## 📚 Additional Resources
-
-### ASP.NET Resources
-- [ASP.NET Web Forms Documentation](https://docs.microsoft.com/en-us/aspnet/web-forms/)
-- [C# Programming Guide](https://docs.microsoft.com/en-us/dotnet/csharp/)
-- [XML Processing in .NET](https://docs.microsoft.com/en-us/dotnet/standard/data/xml/)
-
-### Security Resources
-- [OWASP Top 10](https://owasp.org/www-project-top-ten/)
-- [ASP.NET Security Best Practices](https://docs.microsoft.com/en-us/aspnet/web-forms/overview/security/)
-- [Password Hashing Guidelines](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html)
-
-### Web Services
-- [ASMX Web Services](https://docs.microsoft.com/en-us/previous-versions/dotnet/netframework-4.0/ba0z6a33(v=vs.100))
-- [SOAP Protocol](https://www.w3.org/TR/soap/)
-
----
-
-## 🎓 Academic Integrity Statement
-
-This project is submitted as original work for CSE 445 at Arizona State University. All code, documentation, and designs are created by the listed developer unless otherwise cited. This project adheres to ASU's Academic Integrity Policy.
-
----
-
-<div align="center">
-
-**CSE 445 – Distributed Software Development**
-
-**Arizona State University**
-
-**Spring 2025**
-
----
-
-Made with ☕ and 💻 by Sayan
-
-⭐ **Star this repo if you found it helpful!** ⭐
-
-</div>
