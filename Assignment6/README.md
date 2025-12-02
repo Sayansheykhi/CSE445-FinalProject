@@ -17,11 +17,11 @@ This is the **final integrated project** combining components from all team memb
 
 ### Team Contribution Table
 
-| Team Member | ASURITE ID | Contribution Percentage |
+| Team Member |Contribution Percentage |
 |-------------|------------|------------------------|
-| FULL NAME | ASURITE ID | CONTRIBUTION % |
-| FULL NAME | ASURITE ID | CONTRIBUTION % |
-| FULL NAME | ASURITE ID | CONTRIBUTION % |
+| FULL NAME |CONTRIBUTION % |
+| FULL NAME |CONTRIBUTION % |
+| FULL NAME |CONTRIBUTION % |
 | **Total** | | **100%** |
 
 ### Grade Scaling
